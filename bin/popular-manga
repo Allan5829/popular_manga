@@ -2,4 +2,13 @@
 
 require_relative '../config/environment'
 
-puts "is this working"
+# make an intro method for intro text and calling CLI methods
+puts "Welcome to the Popular Manga CLI!"
+
+# make a menu method that shows manga and gives the user an option to select what they want to view
+puts "Please select the manga you would like to learn more about by typing 1-5"
+puts "1- One Piece"
+puts "2- Naruto"
+puts "3- Dragon Ball"
+puts "4- My Hero Academia"
+puts "5- One Punch Man"
