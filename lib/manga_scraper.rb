@@ -1,0 +1,2 @@
+class MangaScraper
+end 

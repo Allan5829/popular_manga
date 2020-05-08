@@ -3,10 +3,3 @@
 require_relative '../config/environment'
 
 # Controller.new.start
-
-# the menu method in controller.rb
-puts "1- One Piece"
-puts "2- Naruto"
-puts "3- Dragon Ball"
-puts "4- My Hero Academia"
-puts "5- One Punch Man"

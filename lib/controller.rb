@@ -7,6 +7,15 @@ class Controller
   
   def menu
     puts "Please select the manga you would like to learn more about by typing 1-5"
+    # call PopularManga.all to get info on all series then display alphabetically 
+    puts "1- One Piece" # if one piece is selected then call display_info on a name (one piece)
+    puts "2- Naruto"
+    puts "3- Fullmetal Alchemist"
+    puts "4- My Hero Academia"
+    puts "5- One Punch Man"
+  end 
+  
+  def display_info (name)
   end 
   
 end 
