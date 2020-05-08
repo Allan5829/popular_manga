@@ -13,4 +13,10 @@ class PopularManga
   def self.all 
     @@all 
   end 
+  
+  def make_manga
+    MangaScraper.first_scrape (url)
+    MangaScraper.second_scrape (@manga_url)
+  end 
+  
 end 
