@@ -10,8 +10,9 @@ class MangaScraper
   
   def self.fake_scrape
     series = PopularManga.new("One Piece", "https/one_piece")
-    #series.creator = "Echiro Oda"
-    #series.creator_info = "he writes and draws one piece"
+    series.creator = "Echiro Oda"
+    series.creator_info = "he writes and draws one piece"
+    # puts "#{series.creator}, #{series.creator_info}"
   end 
   
 end 

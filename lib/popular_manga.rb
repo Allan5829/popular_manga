@@ -11,7 +11,7 @@ class PopularManga
   end
   
   def self.all 
-    puts @@all 
+    @@all 
   end 
   
   def make_manga
