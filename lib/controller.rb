@@ -20,7 +20,16 @@ class Controller
   end 
   
   def display_info (input)
-    manga = PopularManga.all[input -1]
-    puts "#{manga.creator}, #{manga.creator_info}"
+    total_manga = PopularManga.all.size
+    if (input > 0) && (input < total_manga)
+      manga = PopularManga.all[input -1]
+      puts "#{manga.creator}, #{manga.creator_info}"
+    else 
+      puts "That was not a valid input"
+    end 
+    
+    
+    
+    
   end 
 end #what I'm going to do now is implement what I want my cli to show but "fake" the data for now 
