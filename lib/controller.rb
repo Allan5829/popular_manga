@@ -20,5 +20,3 @@ class Controller
   end 
   
 end 
-
-Controller.new.start
