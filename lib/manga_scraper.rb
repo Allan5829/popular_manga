@@ -13,6 +13,9 @@ class MangaScraper
     series.creator = "Echiro Oda"
     series.creator_info = "he writes and draws one piece"
     # puts "#{series.creator}, #{series.creator_info}"
+    series2 = PopularManga.new("Naruto", "https/naruto")
+    series2.creator = "Kishimoto"
+    series2.creator_info = "he writes and draws naruto"
   end 
   
 end 
