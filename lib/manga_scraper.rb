@@ -12,10 +12,22 @@ class MangaScraper
     series = PopularManga.new("One Piece", "https/one_piece")
     series.creator = "Echiro Oda"
     series.creator_info = "he writes and draws one piece"
-    # puts "#{series.creator}, #{series.creator_info}"
+
     series2 = PopularManga.new("Naruto", "https/naruto")
     series2.creator = "Kishimoto"
     series2.creator_info = "he writes and draws naruto"
+    
+    series3 = PopularManga.new("Fullmetal Alchemist", "https/naruto")
+    series3.creator = "idk the creator"
+    series3.creator_info = "he writes and draws fma"
+    
+    series4 = PopularManga.new("My Hero Academia", "https/naruto")
+    series4.creator = "Hirokoshi"
+    series4.creator_info = "he writes and draws mha"
+    
+    series5 = PopularManga.new("One Punch Man", "https/naruto")
+    series5.creator = "Murata and ONE"
+    series5.creator_info = "I know this series has an author and artist"
   end 
   
 end 
