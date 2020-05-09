@@ -8,4 +8,10 @@ class MangaScraper
     #manga_url is the url specific to the manga that is being scraped
   end 
   
+  def self.fake_scrape
+    series = PopularManga.new("One Piece", "https/one_piece")
+    #series.creator = "Echiro Oda"
+    #series.creator_info = "he writes and draws one piece"
+  end 
+  
 end 

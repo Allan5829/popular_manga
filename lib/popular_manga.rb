@@ -1,5 +1,5 @@
 class PopularManga
-  attr_accessible :name, :manga_url, :creator, :creator_info, :series_info, :recent_volume, :recent_volume_info #info I will be scraping
+  attr_accessor :name, :manga_url, :creator, :creator_info, :series_info, :recent_volume, :recent_volume_info #info I will be scraping
   
   @@all = []
   # url = "https://www.viz.com/read/read/section/46389/more"
@@ -11,7 +11,7 @@ class PopularManga
   end
   
   def self.all 
-    @@all 
+    puts @@all 
   end 
   
   def make_manga

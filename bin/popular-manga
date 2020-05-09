@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
-require_relative "../lib/controller.rb"
+require_relative '../lib/controller.rb'
+require_relative '../lib/manga_scraper.rb'
+require_relative '../lib/popular_manga.rb'
 
 Controller.new.start
