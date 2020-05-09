@@ -16,19 +16,23 @@ class Controller
     puts "4- My Hero Academia"
     puts "5- One Punch Man"
     
-    name = gets 
-    display_info(name)
+    input = gets 
+    if (input == 1) 
+      puts "2"
+    end 
+    display_info(input)
+    
   end 
   
   def display_info (input) # what I'm thinking about is how will the name get the data 
     PopularManga.all.each do |series| # i know I'll be asking for an input I need to see how I'll change from name to number later 
-      if series.name == input 
+      if input == "" #I need a number to lead to a series, I can hard code so 1 = one piece, 2 = naruto etc but that relies on being hard coded I'll do this for now 
         puts "#{series.creator}, #{series.creator_info}"
         puts "the condition passed"
       end 
       puts "end of method"
+      
     end 
-  
   
     
   end 
