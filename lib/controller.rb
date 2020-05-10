@@ -8,16 +8,20 @@ class Controller
   
   def menu
     puts "Please select the manga you would like to learn more about by typing 1-5."
+    puts "Type exit to stop using the CLI."
     # call PopularManga.all and  display alphabetically 
     PopularManga.all.each_with_index do |manga, index|
       puts "#{index + 1}- #{manga.name}"
     end 
     
     number = gets.strip
-    input = number.to_i
-    puts ""
-    display_info(input)
-    
+    if number == "exit"
+      done_using
+    else 
+      input = number.to_i
+      puts ""
+      display_info(input)
+    end 
   end 
   
   def display_info (input)
@@ -49,8 +53,12 @@ class Controller
       done_using
     elsif more_input == 1 
       puts "#{manga.creator_info} input is 1"
+      puts ""
+      display_more_info(input)
     elsif more_input == 2 
       puts "#{manga.creator_info} input is 2"
+      puts ""
+      display_more_info(input)
     elsif more_input == 3
       menu 
     else 
@@ -64,7 +72,7 @@ class Controller
   end 
   
   def invalid
-    puts "That was not a valid input"
+    puts "That was not a valid input."
   end 
   
 end #what I'm going to do now is implement what I want my cli to show but "fake" the data for now 
