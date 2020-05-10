@@ -1,7 +1,8 @@
 #require 'bundler'
 #Bundler.require
+require 'nokogiri'
+require 'pry'
 
-# module Concerns
-# end
-
-#require_all 'lib' #I ran into this issue before so I just commented stuff out to get something running
+require_relative '../lib/controller.rb'
+require_relative '../lib/manga_scraper.rb'
+require_relative '../lib/popular_manga.rb'

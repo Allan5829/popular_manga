@@ -9,6 +9,7 @@ class Controller
   def menu
     puts "Please select the manga you would like to learn more about by typing 1-5."
     puts "Type exit to stop using the CLI."
+    puts ""
     # call PopularManga.all and  display alphabetically 
     PopularManga.all.each_with_index do |manga, index|
       puts "#{index + 1}- #{manga.name}"
