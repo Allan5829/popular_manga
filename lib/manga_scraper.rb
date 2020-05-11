@@ -30,4 +30,7 @@ class MangaScraper
     series5.creator_info = "I know this series has an author and artist"
   end 
   
+  def self.pry_scraping
+  end 
+  
 end 
