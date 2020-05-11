@@ -16,10 +16,15 @@ class PopularManga
   
   def self.make_manga
     doc = Nokogiri::HTML(open("https://www.viz.com/read/read/section/46389/more"))
-    binding.pry 
+    #binding.pry 
     # all manga names = doc.search("div.pad-x-rg.pad-y-md.type-sm.type-rg--sm.type-md--lg.type-center.line-tight").text
+    
+    div.attributes["href"].value
     #MangaScraper.first_scrape (url)
     #MangaScraper.second_scrape (@manga_url)
+    doc.search("div.g-3.g-3--md.mar-b-lg.g-omega a").each do |div|
+      binding.pry 
+    end 
   end 
   
 end 
