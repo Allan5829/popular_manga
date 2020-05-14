@@ -18,4 +18,8 @@ class PopularManga
     MangaScraper.first_scrape(url)
   end
 
+  def assign_attributes(second_scrape)
+    second_scrape.each {|key, value| self.send(("#{key}="), value)}
+  end
+
 end
