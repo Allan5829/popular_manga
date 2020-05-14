@@ -3,14 +3,16 @@ class MangaScraper
   def self.first_scrape (all_manga_url)
     doc = Nokogiri::HTML(open("https://www.viz.com/read/read/section/46389/more"))
 
+    # creates 1 unique PopularManga object per block of code
     doc.search("div.pad-x-rg.pad-y-md.type-sm.type-rg--sm.type-md--lg.type-center.line-tight").each do |title| # searches through every manga title
       if title.text == "Fullmetal Alchemist"
         name1 = title.text #sets a new variable to the name
         doc.search("div.g-3.g-3--md.mar-b-lg.g-omega a").each do |div| #searches through every url
           if div.attributes["href"].value.include?("fullmetal-alchemist")
             url_part1 = div.attributes["href"].value #sets a new variable to the url
-            url1 = ["viz.com", "#{url_part1}"].join
+            url1 = ["https://www.viz.com", "#{url_part1}"].join
             PopularManga.new(name1, url1)  #creates new PopularManga object
+            MangaScraper.second_scrape(url1)
           end
         end
       end
@@ -22,7 +24,7 @@ class MangaScraper
         doc.search("div.g-3.g-3--md.mar-b-lg a").each do |div| #searches through every url
           if div.attributes["href"].value.include?("my-hero-academia")
             url_part1 = div.attributes["href"].value #sets a new variable to the url
-            url1 = ["viz.com", "#{url_part1}"].join
+            url1 = ["https://www.viz.com", "#{url_part1}"].join
             PopularManga.new(name1, url1)  #creates new PopularManga object
           end
         end
@@ -35,7 +37,7 @@ class MangaScraper
         doc.search("div.g-3.g-3--md.mar-b-lg a").each do |div| #searches through every url
           if div.attributes["href"].value.include?("naruto")
             url_part1 = div.attributes["href"].value #sets a new variable to the url
-            url1 = ["viz.com", "#{url_part1}"].join
+            url1 = ["https://www.viz.com", "#{url_part1}"].join
             PopularManga.new(name1, url1)  #creates new PopularManga object
           end
         end
@@ -48,7 +50,7 @@ class MangaScraper
         doc.search("div.g-3.g-3--md.mar-b-lg.g-omega a").each do |div| #searches through every url
           if div.attributes["href"].value.include?("one-piece")
             url_part1 = div.attributes["href"].value #sets a new variable to the url
-            url1 = ["viz.com", "#{url_part1}"].join
+            url1 = ["https://www.viz.com", "#{url_part1}"].join
             PopularManga.new(name1, url1)  #creates new PopularManga object
           end
         end
@@ -61,7 +63,7 @@ class MangaScraper
         doc.search("div.g-3.g-3--md.mar-b-lg a").each do |div| #searches through every url
           if div.attributes["href"].value.include?("one-punch-man")
             url_part1 = div.attributes["href"].value #sets a new variable to the url
-            url1 = ["viz.com", "#{url_part1}"].join
+            url1 = ["https://www.viz.com", "#{url_part1}"].join
             PopularManga.new(name1, url1) #creates new PopularManga object
           end
         end
@@ -73,6 +75,8 @@ class MangaScraper
 
   def self.second_scrape (manga_url) # get and assign the rest of the info needed
     #manga_url is the url specific to the manga that is being scraped
+    doc = Nokogiri::HTML(open(manga_url))
+    binding.pry
   end
 
   def self.fake_scrape
