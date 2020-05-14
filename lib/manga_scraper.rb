@@ -11,8 +11,7 @@ class MangaScraper
           if div.attributes["href"].value.include?("fullmetal-alchemist")
             url_part1 = div.attributes["href"].value #sets a new variable to the url
             url1 = ["https://www.viz.com", "#{url_part1}"].join
-            PopularManga.new(name1, url1)  #creates new PopularManga object
-            #MangaScraper.second_scrape(url1)
+            MangaScraper.second_scrape(name1, url1)
           end
         end
       end
@@ -25,8 +24,7 @@ class MangaScraper
           if div.attributes["href"].value.include?("my-hero-academia")
             url_part1 = div.attributes["href"].value #sets a new variable to the url
             url1 = ["https://www.viz.com", "#{url_part1}"].join
-            PopularManga.new(name1, url1)  #creates new PopularManga object
-            MangaScraper.second_scrape(url1)
+            MangaScraper.second_scrape(name1, url1)
           end
         end
       end
@@ -39,8 +37,7 @@ class MangaScraper
           if div.attributes["href"].value.include?("naruto")
             url_part1 = div.attributes["href"].value #sets a new variable to the url
             url1 = ["https://www.viz.com", "#{url_part1}"].join
-            PopularManga.new(name1, url1)  #creates new PopularManga object
-            #MangaScraper.second_scrape(url1)
+            MangaScraper.second_scrape(name1, url1)
           end
         end
       end
@@ -53,8 +50,7 @@ class MangaScraper
           if div.attributes["href"].value.include?("one-piece")
             url_part1 = div.attributes["href"].value #sets a new variable to the url
             url1 = ["https://www.viz.com", "#{url_part1}"].join
-            PopularManga.new(name1, url1)  #creates new PopularManga object
-            MangaScraper.second_scrape(url1)
+            MangaScraper.second_scrape(name1, url1)
           end
         end
       end
@@ -67,50 +63,24 @@ class MangaScraper
           if div.attributes["href"].value.include?("one-punch-man")
             url_part1 = div.attributes["href"].value #sets a new variable to the url
             url1 = ["https://www.viz.com", "#{url_part1}"].join
-            PopularManga.new(name1, url1) #creates new PopularManga object
-            MangaScraper.second_scrape(url1)
+            MangaScraper.second_scrape(name1, url1)
           end
         end
       end
     end
 
-    # binding.pry
   end
 
-  def self.second_scrape (manga_url)
+  def self.second_scrape (name, manga_url)
     manga_attributes = {}
     doc = Nokogiri::HTML(open(manga_url))
+    manga_attributes[:name] = name
     manga_attributes[:creator] = doc.search("span.disp-bl--bm.mar-b-md").text # :creator
     manga_attributes[:creator_info] = doc.search("div.o_bio.g-4--md.g-omega--md.type-sm.type-rg--lg.line-copy.text-spacing").text # :creator_info
     manga_attributes[:series_info] = doc.search("div.g-8--md.mar-b-lg.mar-b-0--md.type-rg.type-md--lg.line-copy.text-spacing").text # :series_info
     manga_attributes[:recent_volume] = doc.search("h4.type-md.type-lg--md.type-xl--lg.weight-bold.line-tight.mar-b-md.mar-b-lg--md").text # :recent_volume
     manga_attributes[:recent_volume_info] = doc.search("div.text-spacing.type-sm.type-rg--md.type-md--lg.line-caption.mar-b-md.mar-b-lg--md").text # :recent_volume_info
-    binding.pry
-  end
-
-  def self.fake_scrape
-    series = PopularManga.new("One Piece", "https/one_piece")
-    series.creator = "Echiro Oda"
-    series.creator_info = "he writes and draws one piece"
-
-    series2 = PopularManga.new("Naruto", "https/naruto")
-    series2.creator = "Kishimoto"
-    series2.creator_info = "he writes and draws naruto"
-
-    series3 = PopularManga.new("Fullmetal Alchemist", "https/naruto")
-    series3.creator = "idk the creator"
-    series3.creator_info = "he writes and draws fma"
-
-    series4 = PopularManga.new("My Hero Academia", "https/naruto")
-    series4.creator = "Hirokoshi"
-    series4.creator_info = "he writes and draws mha"
-
-    series5 = PopularManga.new("One Punch Man", "https/naruto")
-    series5.creator = "Murata and ONE"
-    series5.creator_info = "I know this series has an author and artist"
-  end
-
-  def self.pry_scraping
+    PopularManga.assign_attributes(manga_attributes)
   end
 
 end

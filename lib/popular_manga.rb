@@ -3,9 +3,8 @@ class PopularManga
 
   @@all = []
 
-  def initialize (name, manga_url)
-    @name = name
-    @manga_url = manga_url
+  def initialize (scraped_info)
+    scraped_info.each {|key, value| self.send(("#{key}="), value)}
     @@all << self
   end
 
@@ -18,8 +17,8 @@ class PopularManga
     MangaScraper.first_scrape(url)
   end
 
-  def assign_attributes(second_scrape)
-    second_scrape.each {|key, value| self.send(("#{key}="), value)}
+  def self.assign_attributes(second_scrape)
+    PopularManga.new(second_scrape)
   end
 
 end

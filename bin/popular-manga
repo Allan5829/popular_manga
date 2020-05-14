@@ -3,5 +3,5 @@
 #require "bundler/setup"
 require_relative '../config/environment.rb'
 
-binding.pry
+#binding.pry
 Controller.new.start
