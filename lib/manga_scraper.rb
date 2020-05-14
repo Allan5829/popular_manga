@@ -12,7 +12,7 @@ class MangaScraper
             url_part1 = div.attributes["href"].value #sets a new variable to the url
             url1 = ["https://www.viz.com", "#{url_part1}"].join
             PopularManga.new(name1, url1)  #creates new PopularManga object
-            MangaScraper.second_scrape(url1)
+            #MangaScraper.second_scrape(url1)
           end
         end
       end
@@ -26,6 +26,7 @@ class MangaScraper
             url_part1 = div.attributes["href"].value #sets a new variable to the url
             url1 = ["https://www.viz.com", "#{url_part1}"].join
             PopularManga.new(name1, url1)  #creates new PopularManga object
+            MangaScraper.second_scrape(url1)
           end
         end
       end
@@ -39,6 +40,7 @@ class MangaScraper
             url_part1 = div.attributes["href"].value #sets a new variable to the url
             url1 = ["https://www.viz.com", "#{url_part1}"].join
             PopularManga.new(name1, url1)  #creates new PopularManga object
+            #MangaScraper.second_scrape(url1)
           end
         end
       end
@@ -52,6 +54,7 @@ class MangaScraper
             url_part1 = div.attributes["href"].value #sets a new variable to the url
             url1 = ["https://www.viz.com", "#{url_part1}"].join
             PopularManga.new(name1, url1)  #creates new PopularManga object
+            MangaScraper.second_scrape(url1)
           end
         end
       end
@@ -65,6 +68,7 @@ class MangaScraper
             url_part1 = div.attributes["href"].value #sets a new variable to the url
             url1 = ["https://www.viz.com", "#{url_part1}"].join
             PopularManga.new(name1, url1) #creates new PopularManga object
+            MangaScraper.second_scrape(url1)
           end
         end
       end
@@ -73,14 +77,14 @@ class MangaScraper
     # binding.pry
   end
 
-  def self.second_scrape (manga_url) # get and assign the rest of the info needed
-    #manga_url is the url specific to the manga that is being scraped
+  def self.second_scrape (manga_url)
+    manga_attributes = {}
     doc = Nokogiri::HTML(open(manga_url))
-    # doc.search("span.disp-bl--bm.mar-b-md").text # :creator "Created by Hiromu Arakawa"
-    # doc.search("div.o_bio.g-4--md.g-omega--md.type-sm.type-rg--lg.line-copy.text-spacing").text # :creator_info Born in Hokkaido (northern Japan), Hiromu Arakawa
-    # doc.search("div.g-8--md.mar-b-lg.mar-b-0--md.type-rg.type-md--lg.line-copy.text-spacing").text # :series_info  In an alchemical ritual gone wrong, Edward Elric
-    # doc.search("h4.type-md.type-lg--md.type-xl--lg.weight-bold.line-tight.mar-b-md.mar-b-lg--md").text # :recent_volume
-    # doc.search("div.text-spacing.type-sm.type-rg--md.type-md--lg.line-caption.mar-b-md.mar-b-lg--md").text # :recent_volume_info
+    manga_attributes[:creator] = doc.search("span.disp-bl--bm.mar-b-md").text # :creator
+    manga_attributes[:creator_info] = doc.search("div.o_bio.g-4--md.g-omega--md.type-sm.type-rg--lg.line-copy.text-spacing").text # :creator_info
+    manga_attributes[:series_info] = doc.search("div.g-8--md.mar-b-lg.mar-b-0--md.type-rg.type-md--lg.line-copy.text-spacing").text # :series_info
+    manga_attributes[:recent_volume] = doc.search("h4.type-md.type-lg--md.type-xl--lg.weight-bold.line-tight.mar-b-md.mar-b-lg--md").text # :recent_volume
+    manga_attributes[:recent_volume_info] = doc.search("div.text-spacing.type-sm.type-rg--md.type-md--lg.line-caption.mar-b-md.mar-b-lg--md").text # :recent_volume_info
     binding.pry
   end
 
