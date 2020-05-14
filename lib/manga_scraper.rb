@@ -3,67 +3,18 @@ class MangaScraper
   def self.first_scrape (all_manga_url)
     doc = Nokogiri::HTML(open("https://www.viz.com/read/read/section/46389/more"))
 
+    @manga = ["Fullmetal Alchemist", "My Hero Academia", "Naruto", "One Piece", "One-Punch Man"]
     # creates 1 unique PopularManga object per block of code
-    doc.search("div.pad-x-rg.pad-y-md.type-sm.type-rg--sm.type-md--lg.type-center.line-tight").each do |title| # searches through every manga title
-      if title.text == "Fullmetal Alchemist"
-        name1 = title.text #sets a new variable to the name
-        doc.search("div.g-3.g-3--md.mar-b-lg.g-omega a").each do |div| #searches through every url
-          if div.attributes["href"].value.include?("fullmetal-alchemist")
-            url_part1 = div.attributes["href"].value #sets a new variable to the url
-            url1 = ["https://www.viz.com", "#{url_part1}"].join
-            MangaScraper.second_scrape(name1, url1)
-          end
-        end
-      end
-    end
-
-    doc.search("div.pad-x-rg.pad-y-md.type-sm.type-rg--sm.type-md--lg.type-center.line-tight").each do |title| # searches through every manga title
-      if title.text == "My Hero Academia"
-        name1 = title.text #sets a new variable to the name
-        doc.search("div.g-3.g-3--md.mar-b-lg a").each do |div| #searches through every url
-          if div.attributes["href"].value.include?("my-hero-academia")
-            url_part1 = div.attributes["href"].value #sets a new variable to the url
-            url1 = ["https://www.viz.com", "#{url_part1}"].join
-            MangaScraper.second_scrape(name1, url1)
-          end
-        end
-      end
-    end
-
-    doc.search("div.pad-x-rg.pad-y-md.type-sm.type-rg--sm.type-md--lg.type-center.line-tight").each do |title| # searches through every manga title
-      if title.text == "Naruto"
-        name1 = title.text #sets a new variable to the name
-        doc.search("div.g-3.g-3--md.mar-b-lg a").each do |div| #searches through every url
-          if div.attributes["href"].value.include?("naruto")
-            url_part1 = div.attributes["href"].value #sets a new variable to the url
-            url1 = ["https://www.viz.com", "#{url_part1}"].join
-            MangaScraper.second_scrape(name1, url1)
-          end
-        end
-      end
-    end
-
-    doc.search("div.pad-x-rg.pad-y-md.type-sm.type-rg--sm.type-md--lg.type-center.line-tight").each do |title| # searches through every manga title
-      if title.text == "One Piece"
-        name1 = title.text #sets a new variable to the name
-        doc.search("div.g-3.g-3--md.mar-b-lg.g-omega a").each do |div| #searches through every url
-          if div.attributes["href"].value.include?("one-piece")
-            url_part1 = div.attributes["href"].value #sets a new variable to the url
-            url1 = ["https://www.viz.com", "#{url_part1}"].join
-            MangaScraper.second_scrape(name1, url1)
-          end
-        end
-      end
-    end
-
-    doc.search("div.pad-x-rg.pad-y-md.type-sm.type-rg--sm.type-md--lg.type-center.line-tight").each do |title| # searches through every manga title
-      if title.text == "One-Punch Man"
-        name1 = title.text #sets a new variable to the name
-        doc.search("div.g-3.g-3--md.mar-b-lg a").each do |div| #searches through every url
-          if div.attributes["href"].value.include?("one-punch-man")
-            url_part1 = div.attributes["href"].value #sets a new variable to the url
-            url1 = ["https://www.viz.com", "#{url_part1}"].join
-            MangaScraper.second_scrape(name1, url1)
+    @manga.each do |manga_name|
+      doc.search("div.pad-x-rg.pad-y-md.type-sm.type-rg--sm.type-md--lg.type-center.line-tight").each do |title| # searches through every manga title
+        if title.text == manga_name
+          name1 = title.text #sets a new variable to the name
+          doc.search("div.g-3.g-3--md.mar-b-lg a").each do |div| #searches through every url
+            if div.attributes["href"].value.include?(MangaScraper.change_into_href(manga_name))
+              url_part1 = div.attributes["href"].value #sets a new variable to the url
+              url1 = ["https://www.viz.com", "#{url_part1}"].join
+              MangaScraper.second_scrape(name1, url1)
+            end
           end
         end
       end
@@ -81,6 +32,20 @@ class MangaScraper
     manga_attributes[:recent_volume] = doc.search("h4.type-md.type-lg--md.type-xl--lg.weight-bold.line-tight.mar-b-md.mar-b-lg--md").text # :recent_volume
     manga_attributes[:recent_volume_info] = doc.search("div.text-spacing.type-sm.type-rg--md.type-md--lg.line-caption.mar-b-md.mar-b-lg--md").text # :recent_volume_info
     PopularManga.assign_attributes(manga_attributes)
+  end
+
+  def self.change_into_href (string)
+    array = string.split("-")
+    array2 = []
+    array.each do |title|
+      array2 << title.split(" ")
+      array2.flatten!
+    end
+    array2.each do |string|
+      string.downcase!
+    end
+    array3 = array2.join("-")
+    array3
   end
 
 end
