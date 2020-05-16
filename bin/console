@@ -4,4 +4,6 @@
 #require "popular_manga"
 
 require_relative '../config/environment.rb'
+
+#binding.pry
 Controller.new.start

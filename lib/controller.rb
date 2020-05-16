@@ -1,8 +1,8 @@
 class Controller
 
   def start
-    puts "Welcome to the Popular Manga CLI!"
     PopularManga.make_manga # create objects based on scraped data for every manga in the @manga array
+    puts "Welcome to the Popular Manga CLI!"
     menu
   end
 

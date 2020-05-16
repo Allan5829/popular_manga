@@ -1,20 +1,26 @@
 # PopularManga
 
-Welcome to the popular_manga CLI! To find out how to use the CLI for yourself look for ## Installation. This CLI presents the user with the name of x amount of manga, five manga in Version 1.0. The user will see some basic info on the manga selected and then be prompted whether or not to view more information about the manga, go to the menu with the entire list of manga, or quit.
+Welcome to the popular_manga CLI! This CLI presents the user with the name of x amount of manga, five manga in Version 1.0. The user will see some basic info on the manga selected and then be prompted whether or not to view more information about the manga, go to the menu with the entire list of manga, or quit.
 
 For those of you who don't know, manga is a Japanese version of comic books.
 
 ## Installation
 
-To clone this CLI run 'git clone git@github.com:Allan5829/popular_manga.git'.
-Before you start the CLI or test at all make sure to run 'bin/setup' so all of the gems install.
-You're ready to run 'bin/console' and see what this CLI has to offer!
+To install clone the repository and download all of the necessary gems through bin/setup.
+
+$ git clone git@github.com:Allan5829/popular_manga.git
+
+$ bin/setup
 
 ## Usage
 
-This program was made as a CLI, not a gem. For those interested in customizing the CLI, the url that is scraped in manga_scraper.rb is "https://www.viz.com/read/read/section/46389/more".
+Once you have cloned and set up the CLI, you are ready to use it!
 
-To customize the manga used in the CLI, find the @manga array in manga_scraper.rb,line 6 and type the name of the manga you wish to use as it is found on the page the url leads to.
+$ bin/popular-manga
+
+For those who would like to customize the CLI with different manga/series, find the lib/manga_scraper.rb file and find the @manga array at line 6.
+To add another manga, simply add another string to the array in the formatting as it appears on the url that is scraped. "https://www.viz.com/read/read/section/46389/more"
+If the manga has symbols in the name that aren't accounted for, it will likely cause an error.
 
 ## Development
 

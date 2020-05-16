@@ -4,5 +4,3 @@ IFS=$'\n\t'
 set -vx
 
 bundle install
-# ideally PopularManga.make_manga would run here before the program begins so all the objects are already created from the scraped data
-# the reason it's not here is because I don't know how
