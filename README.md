@@ -8,15 +8,15 @@ For those of you who don't know, manga is a Japanese version of comic books.
 
 To install clone the repository and download all of the necessary gems through bin/setup.
 
-$ git clone git@github.com:Allan5829/popular_manga.git
+'git clone git@github.com:Allan5829/popular_manga.git'
 
-$ bin/setup
+'bin/setup'
 
 ## Usage
 
 Once you have cloned and set up the CLI, you are ready to use it!
 
-$ bin/popular-manga
+'bin/popular-manga'
 
 For those who would like to customize the CLI with different manga/series, find the lib/manga_scraper.rb file and find the @manga array at line 6.
 To add another manga, simply add another string to the array in the formatting as it appears on the url that is scraped. "https://www.viz.com/read/read/section/46389/more"
